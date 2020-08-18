@@ -13,6 +13,7 @@ const dictionarySchema = mongoose.Schema({
       examples: mongoose.Schema.Types.Mixed,
     },
   ],
+  startsWith: String
 })
 
 dictionarySchema.set('toJSON', {

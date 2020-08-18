@@ -9,7 +9,9 @@ const { CHUNK_SIZE } = constants
  * Run in chunks.
  */
 const populate = async (entries) => {
-  const entryChunks = utils.chunkArray(entries, CHUNK_SIZE)
+  const formattedEntries = format(entries)
+
+  const entryChunks = utils.chunkArray(formattedEntries, CHUNK_SIZE)
 
   try {
     for (let i = 0; i < entryChunks.length; i += 1) {
@@ -20,6 +22,19 @@ const populate = async (entries) => {
   } catch (err) {
     return { status: false, err }
   }
+}
+
+/**
+ * Formats entries to fit the Mongoose model.
+ */
+const format = (entries) => {
+  const formattedEntries = entries.map(entry => {
+    entry.startsWith = entry.word.charAt(0)
+
+    return entry
+  })
+
+  return formattedEntries
 }
 
 module.exports = {
