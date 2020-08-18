@@ -10,6 +10,11 @@ const connect = (url, config) => {
   }
 }
 
+const close = () => {
+  mongoose.connection.close()
+}
+
 module.exports = {
   connect,
+  close,
 }
