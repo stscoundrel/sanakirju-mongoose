@@ -1,1 +1,3 @@
-module.exports = require('./src/')
+const toMongoose = require('./src')
+
+module.exports = toMongoose
