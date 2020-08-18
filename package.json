@@ -1,6 +1,6 @@
 {
   "name": "sanakirju-mongoose",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "MongoDB version of Sanakirju dictionary using Mongoose",
   "main": "index.js",
   "repository": "https://github.com/stscoundrel/sanakirju-mongoose.git",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "mongoose": "^5.10.0",
-    "sanakirju": "^1.0.1"
+    "sanakirju": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
