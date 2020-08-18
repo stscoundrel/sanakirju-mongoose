@@ -31,6 +31,13 @@ const format = (entries) => {
   const formattedEntries = entries.map(entry => {
     entry.startsWith = entry.word.charAt(0)
 
+    /**
+     * "Type" key confuses Mongoose.
+     * Use plural to avoid the confusion.
+     */
+    entry.types = entry.type
+    delete entry.type
+
     return entry
   })
 

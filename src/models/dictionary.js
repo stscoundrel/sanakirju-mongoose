@@ -7,10 +7,10 @@ const dictionarySchema = mongoose.Schema({
   },
   definitions: [
     {
-      definition: mongoose.Schema.Types.Mixed,
-      type: mongoose.Schema.Types.Mixed,
-      grammaticalNote: mongoose.Schema.Types.Mixed,
-      examples: mongoose.Schema.Types.Mixed,
+      definition: [String],
+      types: [String],
+      grammaticalNote: String,
+      examples: [String],
     },
   ],
   startsWith: String
