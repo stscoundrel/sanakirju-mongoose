@@ -10,8 +10,10 @@ MongoDB / Mongoose implementation of Sanakirju, a Karelian - Finnish dictionary 
 
 sanakirju-mongoose uses the core sanakirju to fetch all the dictionary data from XML files. The Mongoose example provides one function for populating your own MongoDB instance with data from Sanakirju.
 
+##### Set up database.
+
 ```javascript
-const toMongoose = require('sanakirju-mongoose')
+const { toMongoose } = require('sanakirju-mongoose')
 
 // Your MongoDB / Mongoose config.
 const config = {
@@ -31,6 +33,59 @@ const populateMyDB = async() => {
 }
 
 populateMyDB()
+```
+
+##### Query the database
+
+```javascript
+const { Dictionary, connection } = require('sanakirju-mongoose')
+
+const config = {
+  url: 'YOUR_CONNECTION_STRING_HERE',
+  config: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+    // Whatever other configs you require.
+  },
+}
+
+/**
+ * Open connection somewhere in your app.
+ * You are free to open MongoDB connection without Sanakirju too.
+ */
+const dbConnection = await connection.connect(config.url, config.config)
+
+if (!dbConnection.status) {
+    return dbConnection.error
+}
+
+// Query some data with Dictionary model.
+const aWords = await Dictionary.find({startsWith: 'a'}).exec()
+const sWords = await Dictionary.find({startsWith: 's'}).exec()
+
+// Close connection once done.
+await connection.close()
+```
+
+##### Dictionary model
+
+Sanakirju provides the following data for the model:
+
+```javascript
+{
+  word: {
+    type: String,
+  },
+  definitions: [
+    {
+      definition: [String],
+      types: [String],
+      grammaticalNote: String,
+      examples: [String],
+    },
+  ],
+  startsWith: String
+}
 ```
 
 ### Sources.
