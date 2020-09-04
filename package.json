@@ -1,6 +1,6 @@
 {
   "name": "sanakirju-mongoose",
-  "version": "0.9.2",
+  "version": "1.0.0",
   "description": "MongoDB version of Sanakirju dictionary using Mongoose",
   "main": "index.js",
   "repository": "https://github.com/stscoundrel/sanakirju-mongoose.git",
